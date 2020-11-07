@@ -11,5 +11,5 @@ jobs:
                           #                        - run: docker login -u $DOCKER_USER
                         - run: echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
                         - run: docker build -t circleci/hola-docker:$CIRCLE_SHA1 .
-                        - run: docker push pablokbs/hola-docker:$CIRCLE_SHA1
+                        - run: docker push circleci/hola-docker:$CIRCLE_SHA1
                         - run: ssh -o StrictHostKeyChecking=no ec2-user@18.188.217.61 "sudo bin/bash /home/ec2-user/deploy.sh $CIRCLE_SHA1"
